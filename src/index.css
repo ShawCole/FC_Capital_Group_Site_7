@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/* CSS variables for quick theming */
+:root {
+    --brand-deep: #0b3d2e;
+    --brand-beige: #f3efe7;
+    --brand-charcoal: #1f2937;
+    --brand-gold: #b88a44;
+}
+
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+        Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
