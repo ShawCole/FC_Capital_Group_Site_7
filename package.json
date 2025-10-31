@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "vite --port 5177",
+    "dev": "vite --port 5178",
     "build": "vite build",
     "preview": "vite preview --port 5177"
   },
