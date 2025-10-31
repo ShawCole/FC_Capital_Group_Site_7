@@ -38,6 +38,7 @@ import {
     Area,
 } from "recharts";
 import FCLogo from "./assets/FC_LOGO_WARM_BEIGE.png";
+import FelixPortrait from "./assets/Photos/photo_-0994.jpg";
 
 // =============================
 // FC CAPITAL GROUP — SINGLE-FILE SITE
@@ -708,57 +709,57 @@ export default function FCCapitalSite() {
             )}
 
             {/* HERO */}
-            <Section id="home" tone="dark" className="relative overflow-hidden pb-[50px] min-h-[496px]" style={{ paddingTop: headerHeight + 40 }}>
+            <Section id="home" tone="dark" className="relative overflow-hidden !py-0 pb-0" style={{ paddingTop: headerHeight }}>
                 <div className="absolute inset-0 fc-hero-pattern opacity-40 pointer-events-none" />
-                {/* Mobile-only extra top spacing under header */}
-                <div className="h-5 md:hidden" />
-                <div className="grid md:grid-cols-12 gap-8 items-center">
-                    <div className="md:col-span-7">
+                <div className="flex items-center" style={{ height: `888px` }}>
+                    <div className="grid md:grid-cols-12 gap-8 items-center">
+                        <div className="md:col-span-7">
 
-                        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-                            {t.hero.h1}
-                        </h1>
-                        <p className="mt-4 text-lg text-white/85 max-w-2xl">
-                            {t.hero.subtitle}
-                        </p>
-                        <div className="mt-8 flex flex-wrap gap-3">
-                            <a href="#contact" className="btn btn-primary">
-                                {t.hero.cta1} <ArrowRight size={18} />
-                            </a>
-                            <a href="#partner" className="btn btn-outline">
-                                {t.hero.cta2}
-                            </a>
+                            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+                                {t.hero.h1}
+                            </h1>
+                            <p className="mt-4 text-lg text-white/85 max-w-2xl">
+                                {t.hero.subtitle}
+                            </p>
+                            <div className="mt-8 flex flex-wrap gap-3">
+                                <a href="#contact" className="btn btn-primary">
+                                    {t.hero.cta1} <ArrowRight size={18} />
+                                </a>
+                                <a href="#partner" className="btn btn-outline">
+                                    {t.hero.cta2}
+                                </a>
+                            </div>
+
                         </div>
-
-                    </div>
-                    <div className="md:col-span-5">
-                        <div className="fc-card p-6 md:p-8">
-                            <div className="flex items-center gap-3">
-                                <div className="h-10 w-10 rounded-lg grid place-items-center bg-[var(--fc-sand)] text-[var(--fc-forest)]">
-                                    <Landmark />
+                        <div className="md:col-span-5">
+                            <div className="fc-card p-6 md:p-8">
+                                <div className="flex items-center gap-3">
+                                    <div className="h-10 w-10 rounded-lg grid place-items-center bg-[var(--fc-sand)] text-[var(--fc-forest)]">
+                                        <Landmark />
+                                    </div>
+                                    <h3 className="text-lg font-semibold text-[var(--fc-charcoal)]">
+                                        {lang === "en" ? "Invest in Mexico with Clarity" : "Invierte en México con claridad"}
+                                    </h3>
                                 </div>
-                                <h3 className="text-lg font-semibold text-[var(--fc-charcoal)]">
-                                    {lang === "en" ? "Invest in Mexico with Clarity" : "Invierte en México con claridad"}
-                                </h3>
+                                <div className="mt-4 text-neutral-700 space-y-2">
+                                    {lang === "en" ? (
+                                        <>
+                                            <p>Purposeful projects meet institutional standards.</p>
+                                            <p>If you are ready to diversify with purpose and build something that lasts, let’s connect.</p>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <p>Proyectos con propósito cumplen estándares institucionales.</p>
+                                            <p>Si estás listo para diversificar con propósito y construir algo que perdure, conectemos.</p>
+                                        </>
+                                    )}
+                                </div>
+                                <ul className="mt-4 space-y-2 text-sm text-neutral-700">
+                                    <li className="flex gap-2 items-start"><CheckCircle2 size={18} className="text-[var(--fc-gold)] mt-0.5 flex-none h-4.5 w-4.5" /> {lang === "en" ? "All projects must serve the land they are built on" : "Todos los proyectos deben servir la tierra en la que se construyen"}</li>
+                                    <li className="flex gap-2 items-start"><CheckCircle2 size={18} className="text-[var(--fc-gold)] mt-0.5 flex-none h-4.5 w-4.5" /> {lang === "en" ? "All projects must benefit the community they live in" : "Todos los proyectos deben beneficiar a la comunidad en la que viven"}</li>
+                                    <li className="flex gap-2 items-start"><CheckCircle2 size={18} className="text-[var(--fc-gold)] mt-0.5 flex-none h-4.5 w-4.5" /> {lang === "en" ? "All projects must support the individuals they impact" : "Todos los proyectos deben apoyar a las personas a las que impactan"}</li>
+                                </ul>
                             </div>
-                            <div className="mt-4 text-neutral-700 space-y-2">
-                                {lang === "en" ? (
-                                    <>
-                                        <p>Purposeful projects meet institutional standards.</p>
-                                        <p>If you are ready to diversify with purpose and build something that lasts, let’s connect.</p>
-                                    </>
-                                ) : (
-                                    <>
-                                        <p>Proyectos con propósito cumplen estándares institucionales.</p>
-                                        <p>Si estás listo para diversificar con propósito y construir algo que perdure, conectemos.</p>
-                                    </>
-                                )}
-                            </div>
-                            <ul className="mt-4 space-y-2 text-sm text-neutral-700">
-                                <li className="flex gap-2 items-start"><CheckCircle2 size={18} className="text-[var(--fc-gold)] mt-0.5 flex-none h-4.5 w-4.5" /> {lang === "en" ? "All projects must serve the land they are built on" : "Todos los proyectos deben servir la tierra en la que se construyen"}</li>
-                                <li className="flex gap-2 items-start"><CheckCircle2 size={18} className="text-[var(--fc-gold)] mt-0.5 flex-none h-4.5 w-4.5" /> {lang === "en" ? "All projects must benefit the community they live in" : "Todos los proyectos deben beneficiar a la comunidad en la que viven"}</li>
-                                <li className="flex gap-2 items-start"><CheckCircle2 size={18} className="text-[var(--fc-gold)] mt-0.5 flex-none h-4.5 w-4.5" /> {lang === "en" ? "All projects must support the individuals they impact" : "Todos los proyectos deben apoyar a las personas a las que impactan"}</li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1045,17 +1046,8 @@ export default function FCCapitalSite() {
                             <a href="https://www.instagram.com" className="inline-flex items-center justify-center h-10 w-10 rounded-full border border-white/30 hover:bg-white/10" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.35 3.608 1.325.975.975 1.263 2.242 1.325 3.608.058 1.266.07 1.646.07 4.834s-.012 3.568-.07 4.834c-.062 1.366-.35 2.633-1.325 3.608-.975.975-2.242 1.263-3.608 1.325-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.35-3.608-1.325-.975-.975-1.263-2.242-1.325-3.608C2.175 15.568 2.163 15.188 2.163 12s.012-3.568.07-4.834c.062-1.366.35-2.633 1.325-3.608C4.533 2.583 5.8 2.295 7.166 2.233 8.432 2.175 8.812 2.163 12 2.163zm0-2.163C8.741 0 8.332.012 7.052.07 5.775.128 4.638.428 3.678 1.388 2.718 2.348 2.418 3.485 2.36 4.762 2.303 6.042 2.29 6.451 2.29 12c0 5.549.013 5.958.07 7.238.058 1.277.358 2.414 1.318 3.374.96.96 2.097 1.26 3.374 1.318C8.332 24.988 8.741 25 12 25s3.668-.012 4.948-.07c1.277-.058 2.414-.358 3.374-1.318.96-.96 1.26-2.097 1.318-3.374.058-1.28.07-1.689.07-7.238 0-5.549-.012-5.958-.07-7.238-.058-1.277-.358-2.414-1.318-3.374C19.362.428 18.225.128 16.948.07 15.668.012 15.259 0 12 0z" /><path d="M12 5.838A6.162 6.162 0 1 0 18.162 12 6.169 6.169 0 0 0 12 5.838zm0 10.162A4 4 0 1 1 16 12a4.005 4.005 0 0 1-4 4z" /><circle cx="18.406" cy="5.594" r="1.44" /></svg></a>
                         </div>
                     </div>
-                    <div className="fc-card p-6 md:p-8">
-                        <div className="text-sm uppercase tracking-wide text-neutral-500">{lang === "en" ? "Guiding beliefs" : "Creencias guía"}</div>
-                        <blockquote className="mt-3 text-xl font-semibold">
-                            “{lang === "en" ? "Persistence beats resistance—bridging investors with Mexico’s finest opportunities." : "La persistencia vence la resistencia—tendemos un puente entre inversionistas y las mejores oportunidades de México."}”
-                        </blockquote>
-                        <div className="mt-5 grid grid-cols-2 gap-4 text-sm">
-                            <div className="p-4 rounded-xl border border-[var(--fc-stone)]/60"><div className="font-semibold">{lang === "en" ? "Clarity" : "Claridad"}</div><p className="text-neutral-600 mt-1">{lang === "en" ? "Simple structures, transparent terms." : "Estructuras simples, términos transparentes."}</p></div>
-                            <div className="p-4 rounded-xl border border-[var(--fc-stone)]/60"><div className="font-semibold">{lang === "en" ? "Purpose" : "Propósito"}</div><p className="text-neutral-600 mt-1">{lang === "en" ? "Investments that build legacy and community." : "Inversiones que construyen legado y comunidad."}</p></div>
-                            <div className="p-4 rounded-xl border border-[var(--fc-stone)]/60"><div className="font-semibold">{lang === "en" ? "Excellence" : "Excelencia"}</div><p className="text-neutral-600 mt-1">{lang === "en" ? "Discipline from underwriting to operations." : "Disciplina del underwriting a la operación."}</p></div>
-                            <div className="p-4 rounded-xl border border-[var(--fc-stone)]/60"><div className="font-semibold">{lang === "en" ? "Integrity" : "Integridad"}</div><p className="text-neutral-600 mt-1">{lang === "en" ? "Truth over hype; relationships first." : "Verdad sobre hype; relaciones primero."}</p></div>
-                        </div>
+                    <div className="fc-card p-0 overflow-hidden">
+                        <img src={FelixPortrait} alt="Felix Cisneros portrait" className="block w-full h-full object-cover" />
                     </div>
                 </div>
             </Section>
