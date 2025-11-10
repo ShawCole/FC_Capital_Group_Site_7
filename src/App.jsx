@@ -22,6 +22,7 @@ import {
     Star,
     Users,
     Languages,
+    Palette,
     Building2,
     Menu,
     X,
@@ -39,6 +40,11 @@ import {
 } from "recharts";
 import FCLogo from "./assets/FC_LOGO_WARM_BEIGE.png";
 import FelixPortrait from "./assets/Photos/photo_-0994.jpg";
+import MeetingPhoto from "./assets/Photos/img-a2031f86.png";
+import Portrait0778 from "./assets/Photos/photo_-0778.jpg";
+import TulumMiniature from "./assets/Photos/Tulum-Miniature.png";
+import LaReservaMini from "./assets/Photos/la_reserva_mini_model.png";
+import ScrollOrbit from "./components/ScrollOrbit";
 
 // =============================
 // FC CAPITAL GROUP — SINGLE-FILE SITE
@@ -53,11 +59,14 @@ const BrandCSS = () => (
     :root{
       --fc-ink:#0e0f11;            /* near-black */
       --fc-charcoal:#1b1f1d;       /* charcoal */
-      --fc-forest:#0f2f27;         /* deep green */
+      --fc-forest:#213c2b;         /* Main Green */
+      --fc-stone:#d9d3cb;          /* Main Light */
+      --fc-blue:#21325e;           /* Main Blue */
+      --fc-brown:#38322a;          /* Accent Brown */
+      --fc-sand:#efe7db;           /* Accent Sand */
+      --fc-beige:#f9dcba;          /* Accent Beige */
       --fc-forest-2:#133b31;       /* alt deep green */
       --fc-sage:#2f6b5a;           /* sage accent for UI */
-      --fc-sand:#efe7db;           /* warm beige background */
-      --fc-stone:#d6cec2;          /* light stone */
       --fc-gold:#c9a96a;           /* restrained gold accent */
       --fc-gold-600:#b6924a;
       --fc-maya:#2c2a1f;           /* subtle Mayan motif color */
@@ -82,7 +91,7 @@ const BrandCSS = () => (
       mask-image: radial-gradient(circle at 60% 10%, black, transparent 65%);
     }
     .fc-maya-border{border-image: repeating-linear-gradient(90deg, var(--fc-gold) 0 10px, transparent 10px 20px) 8}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:9999px;padding:.75rem 1.1rem;font-weight:600}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:.75rem;padding:.75rem 1.1rem;font-weight:600}
     .btn-primary{background:var(--fc-gold);color:#1b1b1b}
     .btn-primary:hover{background:var(--fc-gold-600)}
     .btn-outline{border:1px solid var(--fc-stone);color:white}
@@ -455,6 +464,7 @@ export default function FCCapitalSite() {
     const t = useMemo(() => i18n[lang], [lang]);
     const [filter, setFilter] = useState("all");
     const [leavingUrl, setLeavingUrl] = useState("");
+    const [showBrandGuide, setShowBrandGuide] = useState(false);
 
     // trap external links to show interstitial
     useEffect(() => {
@@ -557,7 +567,7 @@ export default function FCCapitalSite() {
             <div onMouseLeave={() => setHoveredMenu("")}>
                 <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 bg-[var(--fc-forest)]/80 fc-blur text-white border-b border-white/10">
                     <div className="fc-container flex items-center justify-between py-3">
-                        <a href="#home" className="flex items-center gap-3 group">
+                        <a href="#hero-main" className="flex items-center gap-3 group">
                             <div className="h-9 w-9">
                                 <img src={FCLogo} alt="FC Capital Group" className="h-9 w-9 object-contain" draggable={false} />
                             </div>
@@ -708,22 +718,21 @@ export default function FCCapitalSite() {
                 </div>
             )}
 
-            {/* HERO */}
-            <Section id="home" tone="dark" className="relative overflow-hidden !py-0 pb-0" style={{ paddingTop: headerHeight }}>
+            {/* === BEGIN HERO MAIN === */}
+            {/* HERO (top) */}
+            <Section id="hero-main" data-section="hero-main" tone="dark" className="relative overflow-hidden !py-0 pb-0" style={{ paddingTop: headerHeight }}>
                 <div className="absolute inset-0 fc-hero-pattern opacity-40 pointer-events-none" />
-                <div className="flex items-center" style={{ height: `888px` }}>
-                    <div className="grid md:grid-cols-12 gap-8 items-center">
-                        <div className="md:col-span-7">
+                <div className="flex items-center justify-center" style={{ height: `820px` }}>
+                    <div className="grid md:grid-cols-12 gap-8 items-center w-[1170px] mx-auto">
+                        <div className="md:col-span-7 w-[560px] h-[620px] flex flex-col justify-center" data-block="hero-main-content">
 
-                            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-                                {t.hero.h1}
-                            </h1>
-                            <p className="mt-4 text-lg text-white/85 max-w-2xl">
+                            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">Invest in Mexico with Clarity</h1>
+                            <p className="mt-4 mb-4 pt-4 pb-4 text-lg text-white/85 max-w-2xl">
                                 {t.hero.subtitle}
                             </p>
-                            <div className="mt-8 flex flex-wrap gap-3">
+                            <div className="flex flex-wrap gap-3">
                                 <a href="#contact" className="btn btn-primary">
-                                    {t.hero.cta1} <ArrowRight size={18} />
+                                    {t.hero.cta1}
                                 </a>
                                 <a href="#partner" className="btn btn-outline">
                                     {t.hero.cta2}
@@ -731,37 +740,84 @@ export default function FCCapitalSite() {
                             </div>
 
                         </div>
-                        <div className="md:col-span-5">
-                            <div className="fc-card p-6 md:p-8">
-                                <div className="flex items-center gap-3">
-                                    <div className="h-10 w-10 rounded-lg grid place-items-center bg-[var(--fc-sand)] text-[var(--fc-forest)]">
-                                        <Landmark />
-                                    </div>
-                                    <h3 className="text-lg font-semibold text-[var(--fc-charcoal)]">
-                                        {lang === "en" ? "Invest in Mexico with Clarity" : "Invierte en México con claridad"}
-                                    </h3>
-                                </div>
-                                <div className="mt-4 text-neutral-700 space-y-2">
-                                    {lang === "en" ? (
-                                        <>
-                                            <p>Purposeful projects meet institutional standards.</p>
-                                            <p>If you are ready to diversify with purpose and build something that lasts, let’s connect.</p>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <p>Proyectos con propósito cumplen estándares institucionales.</p>
-                                            <p>Si estás listo para diversificar con propósito y construir algo que perdure, conectemos.</p>
-                                        </>
-                                    )}
-                                </div>
-                                <ul className="mt-4 space-y-2 text-sm text-neutral-700">
-                                    <li className="flex gap-2 items-start"><CheckCircle2 size={18} className="text-[var(--fc-gold)] mt-0.5 flex-none h-4.5 w-4.5" /> {lang === "en" ? "All projects must serve the land they are built on" : "Todos los proyectos deben servir la tierra en la que se construyen"}</li>
-                                    <li className="flex gap-2 items-start"><CheckCircle2 size={18} className="text-[var(--fc-gold)] mt-0.5 flex-none h-4.5 w-4.5" /> {lang === "en" ? "All projects must benefit the community they live in" : "Todos los proyectos deben beneficiar a la comunidad en la que viven"}</li>
-                                    <li className="flex gap-2 items-start"><CheckCircle2 size={18} className="text-[var(--fc-gold)] mt-0.5 flex-none h-4.5 w-4.5" /> {lang === "en" ? "All projects must support the individuals they impact" : "Todos los proyectos deben apoyar a las personas a las que impactan"}</li>
-                                </ul>
+                        <div className="md:col-span-5" data-block="hero-main-images">
+                            <div className="fc-card p-0 overflow-hidden">
+                                <img src={MeetingPhoto} alt="Team meeting" className="block w-full h-full object-cover" />
                             </div>
                         </div>
                     </div>
+                </div>
+            </Section>
+            {/* === END HERO MAIN === */}
+
+            {/* BRAND GUIDE hidden in floating panel; section removed */}
+
+            {/* === BEGIN FIRST INTRO === */}
+            {/* FIRST INTRO (formerly hero-2) */}
+            <Section id="first-intro" data-section="first-intro" tone="sand" className="relative overflow-hidden !py-0 pb-0" style={{ paddingTop: headerHeight }}>
+                <div className="absolute inset-0 fc-hero-pattern opacity-40 pointer-events-none" />
+                <div className="w-[1170px] mx-auto flex items-center gap-8" style={{ height: `820px` }}>
+                    <div className="relative flex justify-end items-start w-[560px] h-[620px] box-border pl-2 pr-2 pt-8" data-block="first-intro-images">
+                        {/* Picture A (large) */}
+                        <div className="fc-card p-0 overflow-hidden w-[328px] h-[479px]">
+                            <img src={Portrait0778} alt="Portrait" className="block w-full h-full object-cover" />
+                        </div>
+                        {/* Picture B (small, overlapping) */}
+                        <div className="absolute left-0 bottom-[46px] z-10">
+                            <div className="fc-card p-0 overflow-hidden w-40 md:w-52 aspect-[3/4]">
+                                <img src={LaReservaMini} alt="Tulum miniature" className="block w-full h-full object-cover" />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-[560px] h-[620px] box-border pl-8 flex flex-col" data-block="first-intro-content">
+                        <div className="h-16 flex items-center">
+                            <div className="text-sm uppercase tracking-[0.2em] text-[var(--fc-charcoal)]/60">Our Core Competence</div>
+                        </div>
+                        <div>
+                            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+                                {t.hero.h1}
+                            </h1>
+                            <p className="mt-4 text-lg text-[var(--fc-ink)] max-w-2xl">
+                                We are a boutique capital management group based in Mexico, connecting global capital with impactful development projects. Our small, dedicated team ensures personalized service and strategic investment solutions.
+                            </p>
+                            <div className="mt-8 flex flex-wrap gap-3">
+                                <a href="#contact" className="btn btn-primary">
+                                    Learn More
+                                </a>
+                            </div>
+                        </div>
+                        <div className="flex-1" />
+                    </div>
+                </div>
+            </Section>
+            {/* === END FIRST INTRO === */}
+
+            {/* INSERTED: Strategies (clone) */}
+            <Section id="strategies-inline" className="!pt-8 !pb-0 md:!pt-8 md:!pb-0">
+                <h2 className="text-3xl md:text-4xl font-extrabold mb-2">All Projects Must:</h2>
+                <p className="text-neutral-600 mb-6">(Above all else)</p>
+                <div className="grid md:grid-cols-3 gap-6">
+                    <div className="fc-card p-6 md:p-8 border border-[var(--fc-stone)]/60 bg-[var(--fc-sand)]">
+                        <div className="flex items-center gap-3">
+                            <div className="h-10 w-10 rounded-lg grid place-items-center bg-[var(--fc-forest)]/10 text-[var(--fc-forest)]"><Building2 /></div>
+                            <h3 className="text-xl font-semibold">Serve the land they are built on</h3>
+                        </div>
+                    </div>
+                    <div className="fc-card p-6 md:p-8 border border-[var(--fc-stone)]/60 bg-white">
+                        <div className="flex items-center gap-3">
+                            <div className="h-10 w-10 rounded-lg grid place-items-center bg-[var(--fc-forest)]/10 text-[var(--fc-forest)]"><Leaf /></div>
+                            <h3 className="text-xl font-semibold">Benefit the community they live in</h3>
+                        </div>
+                    </div>
+                    <div className="fc-card p-6 md:p-8 border border-[var(--fc-stone)]/60 bg-white">
+                        <div className="flex items-center gap-3">
+                            <div className="h-10 w-10 rounded-lg grid place-items-center bg-[var(--fc-forest)]/10 text-[var(--fc-forest)]"><Recycle /></div>
+                            <h3 className="text-xl font-semibold">Support the individuals they impact</h3>
+                        </div>
+                    </div>
+                </div>
+                <div style={{ marginTop: -128 }}>
+                    <ScrollOrbit />
                 </div>
             </Section>
 
@@ -1199,6 +1255,64 @@ export default function FCCapitalSite() {
             </footer>
 
             {/* Floating language toggle */}
+            {/* Floating brand guide toggle */}
+            <button
+                onClick={() => setShowBrandGuide((v) => !v)}
+                title="Brand guide"
+                aria-label="Brand guide"
+                className="fixed bottom-24 right-6 z-50 h-12 w-12 rounded-full bg-white text-[var(--fc-forest)] border border-[var(--fc-stone)] shadow-lg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--fc-gold)] flex items-center justify-center"
+            >
+                <Palette size={20} />
+            </button>
+
+            <AnimatePresence>
+                {showBrandGuide && (
+                    <motion.div
+                        className="fixed bottom-24 right-24 z-50 overflow-hidden"
+                        initial={{ width: 0, opacity: 0 }}
+                        animate={{ width: 560, opacity: 1 }}
+                        exit={{ width: 0, opacity: 0 }}
+                        transition={{ type: 'spring', stiffness: 260, damping: 26 }}
+                    >
+                        <div className="fc-card p-4 md:p-5">
+                            <div className="flex items-center justify-between mb-3">
+                                <div className="text-sm font-semibold">Brand Guide</div>
+                                <button
+                                    className="pill text-[var(--fc-charcoal)]"
+                                    onClick={() => setShowBrandGuide(false)}
+                                >
+                                    Close
+                                </button>
+                            </div>
+                            <div className="grid grid-cols-3 gap-3">
+                                {[{
+                                    name: 'Main Green', cssVar: '--fc-forest', hex: '#213c2b'
+                                }, {
+                                    name: 'Main Light', cssVar: '--fc-stone', hex: '#d9d3cb'
+                                }, {
+                                    name: 'Main Blue', cssVar: '--fc-blue', hex: '#21325e'
+                                }, {
+                                    name: 'Accent Brown', cssVar: '--fc-brown', hex: '#38322a'
+                                }, {
+                                    name: 'Accent Sand', cssVar: '--fc-sand', hex: '#efe7db'
+                                }, {
+                                    name: 'Accent Beige', cssVar: '--fc-beige', hex: '#f9dcba'
+                                }].map((c, i) => (
+                                    <div key={i} className="fc-card p-3">
+                                        <div className="rounded-lg h-14 w-full border" style={{ background: `var(${c.cssVar})`, borderColor: 'rgba(0,0,0,0.06)' }} />
+                                        <div className="mt-2">
+                                            <div className="text-sm font-semibold">{c.name}</div>
+                                            <div className="text-xs text-neutral-600">var({c.cssVar})</div>
+                                            <div className="text-xs text-neutral-600">{c.hex}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             <button
                 onClick={() => setLang(lang === "en" ? "es" : "en")}
                 title="Switch language"
