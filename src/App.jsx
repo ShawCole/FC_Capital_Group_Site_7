@@ -43,8 +43,14 @@ import FelixPortrait from "./assets/Photos/photo_-0994.jpg";
 import MeetingPhoto from "./assets/Photos/img-a2031f86.png";
 import Portrait0778 from "./assets/Photos/photo_-0778.jpg";
 import TulumMiniature from "./assets/Photos/Tulum-Miniature.png";
-import LaReservaMini from "./assets/Photos/la_reserva_mini_model.png";
+import LaReservaAngled2 from "./assets/Photos/la_reserva_angeled_2.png";
+import SitePlan6808 from "./assets/Photos/IMG_6808.jpg";
+import SitePlan6797 from "./assets/Photos/IMG_6797.jpg";
+import SitePhoto6802 from "./assets/Photos/IMG_5699E3FC4B58-1.jpeg";
+import LaReservaPlan from "./assets/Photos/La_Reserva.png";
+import AwenMasterPlan from "./assets/Photos/a0d40afb-5c6d-460b-9ed7-f277a40eb04a.jpg";
 import ScrollOrbit from "./components/ScrollOrbit";
+import ScrollOrbitBaked from "./components/ScrollOrbitBaked";
 
 // =============================
 // FC CAPITAL GROUP — SINGLE-FILE SITE
@@ -765,7 +771,7 @@ export default function FCCapitalSite() {
                         {/* Picture B (small, overlapping) */}
                         <div className="absolute left-0 bottom-[46px] z-10">
                             <div className="fc-card p-0 overflow-hidden w-40 md:w-52 aspect-[3/4]">
-                                <img src={LaReservaMini} alt="Tulum miniature" className="block w-full h-full object-cover" />
+                                <img src={LaReservaAngled2} alt="Tulum miniature" className="block w-full h-full object-cover" />
                             </div>
                         </div>
                     </div>
@@ -799,7 +805,7 @@ export default function FCCapitalSite() {
                 <div className="grid md:grid-cols-3 gap-6">
                     <div className="fc-card p-6 md:p-8 border border-[var(--fc-stone)]/60 bg-[var(--fc-sand)]">
                         <div className="flex items-center gap-3">
-                            <div className="h-10 w-10 rounded-lg grid place-items-center bg-[var(--fc-forest)]/10 text-[var(--fc-forest)]"><Building2 /></div>
+                            <div className="h-10 w-10 rounded-lg grid place-items-center bg-[var(--fc-forest)]/10 text-[var(--fc-forest)] hidden"><Building2 /></div>
                             <h3 className="text-xl font-semibold">Serve the land they are built on</h3>
                         </div>
                     </div>
@@ -817,35 +823,35 @@ export default function FCCapitalSite() {
                     </div>
                 </div>
                 <div style={{ marginTop: -128 }}>
-                    <ScrollOrbit />
+                    <ScrollOrbitBaked />
                 </div>
             </Section>
 
             {/* DUPLICATE: Portfolio */}
-            <Section id="portfolio-2" tone="sand" className="!py-8 md:!py-8">
+            <Section id="portfolio-2" tone="dark" className="!py-8 md:!py-8">
                 <div className="flex items-end justify-between gap-4 flex-wrap">
                     <div>
                         <h2 className="text-3xl md:text-4xl font-extrabold text-center md:text-left">Who We Are</h2>
-                        <p className="text-neutral-600 mt-2 max-w-2xl mx-auto md:mx-0 text-center md:text-left">
+                        <p className="text-white mt-2 max-w-2xl mx-auto md:mx-0 text-center md:text-left">
                             {lang === "en" ? "The Bridge between Vision and Value." : "The Bridge between Vision and Value."}
                         </p>
                         {/* Additional paragraph box */}
-                        <div className="fc-card p-6 md:p-7 mt-4">
+                        <div className="p-6 md:p-7 mt-4 bg-transparent text-lg md:text-xl">
                             {lang === "en" ? (
-                                <div className="text-neutral-700 space-y-4">
+                                <div className="text-white space-y-4">
                                     <p>FC Capital Group is a boutique investment firm connecting global investors with Mexico’s refined opportunities.</p>
                                     <p>Founded by Felix Cisneros, we operate at the intersection of institutional discipline and cultural depth, blending financial strategy and long-term value creation.</p>
                                     <p>Rooted in Tulum with a global mindset, we identify and develop enduring assets in real estate, hospitality, and ventures where design, purpose, and performance align.</p>
-                                    <p>Our philosophy is simple: persistence beats resistance. We believe capital is trust, time, and vision, guided with clarity and conscience to become legacy.</p>
+                                    <p>Our portfolio is a living trust between visionaries and stewards of value.</p>
                                 </div>
                             ) : (
-                                <p className="text-neutral-700">FC Capital Group conecta capital global con las mejores oportunidades de México—con gobernanza, términos claros y ejecución en campo.</p>
+                                <p className="text-white">FC Capital Group conecta capital global con las mejores oportunidades de México—con gobernanza, términos claros y ejecución en campo.</p>
                             )}
                         </div>
                         {/* Where we operate chip row */}
                         <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
                             {['Tulum', 'CDMX', 'Guadelajara', 'Puerto Escondito', 'Playa Del Carmen', 'Baja California', 'Hidalgo'].map((city) => (
-                                <span key={city} className="chip bg-white">{city}</span>
+                                <span key={city} className="chip bg-white text-black">{city}</span>
                             ))}
                         </div>
                     </div>
@@ -856,29 +862,50 @@ export default function FCCapitalSite() {
 
             {/* DUPLICATE: Strategies */}
             <Section id="strategies-2" className="!py-8 md:!py-8">
-                <h2 className="text-3xl md:text-4xl font-extrabold mb-2">Investment Portfolios</h2>
+                <h2 className="text-3xl md:text-4xl font-extrabold mb-2">Available Investments</h2>
                 <p className="text-neutral-600 mb-6">Curated opportunities. Enduring value.</p>
-                <div className="grid md:grid-cols-3 gap-6">
-                    <div className="fc-card p-6 md:p-8 border border-[var(--fc-stone)]/60 bg-[var(--fc-sand)]">
-                        <div className="flex items-center gap-3">
-                            <div className="h-10 w-10 rounded-lg grid place-items-center bg-[var(--fc-forest)]/10 text-[var(--fc-forest)]"><Building2 /></div>
-                            <h3 className="text-xl font-semibold">Real Estate & Hospitality</h3>
+                <div className="grid gap-6">
+                    {/* Row 1: Left */}
+                    <div className="flex justify-center items-start gap-6">
+                        <div className="hidden md:block">
+                            <div className="p-0 overflow-hidden w-[320px]" style={{ background: "transparent", border: "none", boxShadow: "none", outline: "none" }}>
+                                <img src={LaReservaPlan} alt="Site plan" className="block w-full h-auto object-cover" />
+                            </div>
                         </div>
-                        <p className="mt-3 text-neutral-700">From residential and mixed-use developments to boutique hospitality, we target assets that combine location, design, and cultural resonance. Our projects are built to last, offering stability and tangible growth.</p>
+                        <div className="p-6 md:p-8 w-full md:max-w-[680px]" style={{ background: "transparent", border: "none", boxShadow: "none" }}>
+                            <div className="flex items-center gap-3">
+                                <h3 className="text-xl font-semibold">Real Estate & Hospitality</h3>
+                            </div>
+                            <p className="mt-3 text-neutral-700">From residential and mixed-use developments to boutique hospitality, we target assets that combine location, design, and cultural resonance. Our projects are built to last, offering stability and tangible growth.</p>
+                        </div>
                     </div>
-                    <div className="fc-card p-6 md:p-8 border border-[var(--fc-stone)]/60 bg-white">
-                        <div className="flex items-center gap-3">
-                            <div className="h-10 w-10 rounded-lg grid place-items-center bg-[var(--fc-forest)]/10 text-[var(--fc-forest)]"><Leaf /></div>
-                            <h3 className="text-xl font-semibold">Private Equity & Ventures</h3>
+                    {/* Row 2: Left */}
+                    <div className="flex justify-center items-start gap-6">
+                        <div className="p-6 md:p-8 w-full md:max-w-[680px] text-right" style={{ background: "transparent", border: "none", boxShadow: "none" }}>
+                            <div className="flex items-center gap-3 justify-end">
+                                <h3 className="text-xl font-semibold">Private Equity & Ventures</h3>
+                            </div>
+                            <p className="mt-3 text-neutral-700">We partner with companies that share our values and vision. With investors who develop responsibly, scale intelligently, and deliver sustainable returns.</p>
                         </div>
-                        <p className="mt-3 text-neutral-700">We partner with companies that share our values and vision. With investors who develop responsibly, scale intelligently, and deliver sustainable returns.</p>
+                        <div className="hidden md:block">
+                            <div className="fc-card p-0 overflow-hidden w-[320px]">
+                                <img src={SitePhoto6802} alt="Architecture detail" className="block w-full h-auto object-cover" />
+                            </div>
+                        </div>
                     </div>
-                    <div className="fc-card p-6 md:p-8 border border-[var(--fc-stone)]/60 bg-white">
-                        <div className="flex items-center gap-3">
-                            <div className="h-10 w-10 rounded-lg grid place-items-center bg-[var(--fc-forest)]/10 text-[var(--fc-forest)]"><Recycle /></div>
-                            <h3 className="text-xl font-semibold">Strategic Land Holdings</h3>
+                    {/* Row 3: Left */}
+                    <div className="flex justify-center items-start gap-6">
+                        <div className="hidden md:block">
+                            <div className="p-0 overflow-hidden w-[320px]" style={{ background: "transparent", border: "none", boxShadow: "none", outline: "none", borderRadius: "1.25rem" }}>
+                                <img src={AwenMasterPlan} alt="Lots plan" className="block w-full h-auto object-cover" />
+                            </div>
                         </div>
-                        <p className="mt-3 text-neutral-700">Through selective land acquisition, we secure high-potential sites that provide optionality and long-term growth, especially in emerging and high-demand regions like Tulum and beyond.</p>
+                        <div className="p-6 md:p-8 w-full md:max-w-[384px]" style={{ background: "transparent", border: "none", boxShadow: "none" }}>
+                            <div className="flex items-center gap-3">
+                                <h3 className="text-xl font-semibold">Strategic Land Holdings</h3>
+                            </div>
+                            <p className="mt-3 text-neutral-700">Through selective land acquisition, we secure high-potential sites that provide optionality and long-term growth, especially in emerging and high-demand regions like Tulum and beyond.</p>
+                        </div>
                     </div>
                 </div>
             </Section>
@@ -945,7 +972,6 @@ export default function FCCapitalSite() {
                         onMouseDown={onCarouselMouseDown}
                         onMouseMove={onCarouselMouseMove}
                         onMouseUp={endCarouselDrag}
-                        onMouseLeaveCapture={endCarouselDrag}
                     >
                         {[
                             {
