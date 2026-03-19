@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useMotionValueEvent, useScroll } from "framer-motion";
 import { bakedPlan } from "./bakedPlan";
 
@@ -98,6 +98,14 @@ export default function ScrollOrbitBaked() {
     const icon3_y = useMotionValue(0);
     const title_opacity = useMotionValue(0);
     const stage_y = useMotionValue(0);
+    // DOM refs for accurate page-relative coordinates
+    const icon1Ref = useRef<HTMLImageElement | null>(null);
+    const icon2Ref = useRef<HTMLImageElement | null>(null);
+    const icon3Ref = useRef<HTMLImageElement | null>(null);
+    const pageCoordsRafRef = useRef<number | null>(null);
+    const [icon1Page, setIcon1Page] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+    const [icon2Page, setIcon2Page] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+    const [icon3Page, setIcon3Page] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -198,6 +206,22 @@ export default function ScrollOrbitBaked() {
         // Title fade near the end of the forward plan-time
         const fade = easeOutQuart(clamp((tPlan - 0.85) / 0.15, 0, 1));
         title_opacity.set(fade);
+
+        // After layout updates, sample actual page-relative centers of the icons
+        if (pageCoordsRafRef.current) cancelAnimationFrame(pageCoordsRafRef.current);
+        pageCoordsRafRef.current = requestAnimationFrame(() => {
+            const centerOf = (el: Element | null) => {
+                if (!el) return { x: 0, y: 0 };
+                const r = (el as HTMLElement).getBoundingClientRect();
+                return {
+                    x: r.left + r.width / 2 + window.scrollX,
+                    y: r.top + r.height / 2 + window.scrollY,
+                };
+            };
+            setIcon1Page(centerOf(icon1Ref.current));
+            setIcon2Page(centerOf(icon2Ref.current));
+            setIcon3Page(centerOf(icon3Ref.current));
+        });
     });
 
     return (
@@ -233,6 +257,16 @@ export default function ScrollOrbitBaked() {
             >
                 <div>Page: {pageScrollPct.toFixed(2)}%</div>
                 <div>Orbit: {orbitPct.toFixed(2)}%</div>
+                <div style={{ marginTop: 4 }}>
+                    <div>Icon 1: x {icon1_x.get().toFixed(1)}, y {icon1_y.get().toFixed(1)}</div>
+                    <div>Icon 2: x {icon2_x.get().toFixed(1)}, y {icon2_y.get().toFixed(1)}</div>
+                    <div>Icon 3: x {icon3_x.get().toFixed(1)}, y {icon3_y.get().toFixed(1)}</div>
+                </div>
+                <div style={{ marginTop: 4, borderTop: "1px solid rgba(255,255,255,0.2)", paddingTop: 4 }}>
+                    <div>Page Icon 1: x {icon1Page.x.toFixed(1)}, y {icon1Page.y.toFixed(1)}</div>
+                    <div>Page Icon 2: x {icon2Page.x.toFixed(1)}, y {icon2Page.y.toFixed(1)}</div>
+                    <div>Page Icon 3: x {icon3Page.x.toFixed(1)}, y {icon3Page.y.toFixed(1)}</div>
+                </div>
             </div>
             <div
                 style={{
@@ -270,6 +304,7 @@ export default function ScrollOrbitBaked() {
 
                     {/* Icon 1 (replaced with Individual background image) */}
                     <motion.img
+                        ref={icon1Ref}
                         src={INDIVIDUAL_IMG}
                         alt="Individual"
                         style={{
@@ -289,6 +324,7 @@ export default function ScrollOrbitBaked() {
                     />
                     {/* Icon 2 (replaced with Community background image) */}
                     <motion.img
+                        ref={icon2Ref}
                         src={COMMUNITY_IMG}
                         alt="Community"
                         style={{
@@ -308,6 +344,7 @@ export default function ScrollOrbitBaked() {
                     />
                     {/* Icon 3 (replaced with Land background image) */}
                     <motion.img
+                        ref={icon3Ref}
                         src={LAND_IMG}
                         alt="Land"
                         style={{

@@ -112,6 +112,20 @@ const BrandCSS = () => (
     /* Prevent overscroll bounce/jitter */
     .fc-hscroll{overscroll-behavior:none}
     .fc-touch{touch-action:pan-x}
+    /* Feather mask utility for soft image edges */
+    .mask-feather{-webkit-mask-image: radial-gradient(ellipse at center, black 72%, transparent 100%);mask-image: radial-gradient(ellipse at center, black 72%, transparent 100%);-webkit-mask-size:100% 100%;mask-size:100% 100%}
+    /* Rectangular edge feather that follows container borders */
+    .mask-rect-feather{
+      -webkit-mask-image:
+        linear-gradient(to right, transparent 0, black 32px, black calc(100% - 32px), transparent 100%),
+        linear-gradient(to bottom, transparent 0, black 32px, black calc(100% - 32px), transparent 100%);
+      mask-image:
+        linear-gradient(to right, transparent 0, black 32px, black calc(100% - 32px), transparent 100%),
+        linear-gradient(to bottom, transparent 0, black 32px, black calc(100% - 32px), transparent 100%);
+      /* Intersect vertical and horizontal masks to fade only near edges */
+      -webkit-mask-composite: source-in;
+      mask-composite: intersect;
+    }
   `}</style>
 );
 
@@ -868,8 +882,8 @@ export default function FCCapitalSite() {
                     {/* Row 1: Left */}
                     <div className="flex justify-center items-start gap-6">
                         <div className="hidden md:block">
-                            <div className="p-0 overflow-hidden w-[320px]" style={{ background: "transparent", border: "none", boxShadow: "none", outline: "none" }}>
-                                <img src={LaReservaPlan} alt="Site plan" className="block w-full h-auto object-cover" />
+                            <div className="p-0 overflow-visible w-[320px]">
+                                <img src={LaReservaPlan} alt="Site plan" className="block w-[320px] h-auto object-contain" />
                             </div>
                         </div>
                         <div className="p-6 md:p-8 w-full md:max-w-[680px]" style={{ background: "transparent", border: "none", boxShadow: "none" }}>
@@ -888,19 +902,19 @@ export default function FCCapitalSite() {
                             <p className="mt-3 text-neutral-700">We partner with companies that share our values and vision. With investors who develop responsibly, scale intelligently, and deliver sustainable returns.</p>
                         </div>
                         <div className="hidden md:block">
-                            <div className="fc-card p-0 overflow-hidden w-[320px]">
-                                <img src={SitePhoto6802} alt="Architecture detail" className="block w-full h-auto object-cover" />
+                            <div className="p-0 overflow-hidden w-[320px] aspect-[4/3] rounded-[1.25rem]">
+                                <img src={SitePhoto6802} alt="Architecture detail" className="block w-full h-full object-cover mask-rect-feather" />
                             </div>
                         </div>
                     </div>
                     {/* Row 3: Left */}
                     <div className="flex justify-center items-start gap-6">
                         <div className="hidden md:block">
-                            <div className="p-0 overflow-hidden w-[320px]" style={{ background: "transparent", border: "none", boxShadow: "none", outline: "none", borderRadius: "1.25rem" }}>
-                                <img src={AwenMasterPlan} alt="Lots plan" className="block w-full h-auto object-cover" />
+                            <div className="p-0 overflow-hidden w-[320px] aspect-[4/3] rounded-[1.25rem]">
+                                <img src={AwenMasterPlan} alt="Lots plan" className="block w-full h-full object-cover mask-rect-feather" />
                             </div>
                         </div>
-                        <div className="p-6 md:p-8 w-full md:max-w-[384px]" style={{ background: "transparent", border: "none", boxShadow: "none" }}>
+                        <div className="p-6 md:p-8 w-full md:max-w-[680px]" style={{ background: "transparent", border: "none", boxShadow: "none" }}>
                             <div className="flex items-center gap-3">
                                 <h3 className="text-xl font-semibold">Strategic Land Holdings</h3>
                             </div>
